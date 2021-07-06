@@ -1,0 +1,25 @@
+.gg-tabs {
+  .tabs-bar {
+    display: flex;
+    background-color: $tabs-bar-bg;
+    border-bottom: $tabs-bar-border-width solid $tabs-bar-border-color;
+    font-size: $tabs-bar-font-size;
+  }
+  .gg-tab-item {
+    padding: 20px;
+    border-bottom: $tabs-bar-item-active-border-width solid transparent;
+    cursor: pointer;
+    &.is-active {
+      color: $tabs-bar-item-active-color;
+      border-bottom-color: currentColor;
+    }
+    &.is-disabled {
+      color: $tabs-bar-disabled-color !important;
+      cursor: not-allowed;
+      pointer-events: none;
+    }
+    &:hover {
+      color: $tabs-bar-item-active-color;
+    }
+  }
+}
