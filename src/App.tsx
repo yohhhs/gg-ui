@@ -1,4 +1,7 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { library } from "@fortawesome/fontawesome-svg-core";
+import { fas } from '@fortawesome/free-solid-svg-icons'
+
 import Button from "./components/Button/button";
 import Menu from "./components/Menu/menu";
 import MenuItem from "./components/Menu/menuItem";
@@ -6,12 +9,17 @@ import SubMenu from "./components/Menu/subMenu";
 import Alert from "./components/Alert/alert";
 import Tabs from "./components/Tabs/tabs";
 import TabItem from "./components/Tabs/tabItem";
+import Icon from "./components/Icon/icon"
+import Transition from "./components/Transition/transition";
+
+library.add(fas)
 
 function App() {
+  const [show, setShow] = useState(false)
   return (
     <div className="App">
       <header className="App-header" style={{padding: 50}}>
-        <Menu onSelect={(i) => alert(i)} defaultOpenSubMenus={['0']} mode='vertical'>
+        <Menu onSelect={(i) => alert(i)}>
           <SubMenu title='biaoti'>
             <MenuItem>122222222</MenuItem>
             <MenuItem>2</MenuItem>
@@ -25,7 +33,7 @@ function App() {
           <MenuItem index={2}>2</MenuItem>
           <MenuItem index={3}>3</MenuItem>
         </Menu>*/}
-        <Button size='lg' btnType='primary'>large primary</Button>
+        <Button size='lg' btnType='primary' onClick={() => setShow(!show)}>large primary</Button>
         <Button size='sm' btnType='danger'>small danger</Button>
         <Button btnType='default' disabled>默认按钮</Button>
         <Button btnType='link' href={'//ba'}>a</Button>
@@ -41,6 +49,15 @@ function App() {
           <TabItem label='2'>2222</TabItem>
           <TabItem label='3' disabled>3333</TabItem>
         </Tabs>
+        <Icon icon='arrow-down' theme='warning' />
+        <Transition timeout={300} in={show} animation='zoom-in-left'>
+          <div>
+            <p>1111111111111111111111111111111</p>
+            <p>1111111111111111111111111111111</p>
+            <p>1111111111111111111111111111111</p>
+            <p>1111111111111111111111111111111</p>
+          </div>
+        </Transition>
       </header>
     </div>
   );

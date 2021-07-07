@@ -2,6 +2,7 @@ import React, { useContext, useState } from "react";
 import classNames from "classnames";
 import { MenuContext } from "./menu";
 import {MenuItemProps} from "./menuItem";
+import Transition from "../Transition/transition";
 
 export interface SubMenuProps {
   index?: string;
@@ -54,9 +55,11 @@ const SubMenu: React.FC<SubMenuProps> = (props) => {
       }
     })
     return (
-      <ul className={subMenuClass}>
-        {childrenComponent}
-      </ul>
+      <Transition in={menuOpen} timeout={300} animation='zoom-in-top'>
+        <ul className={subMenuClass}>
+          {childrenComponent}
+        </ul>
+      </Transition>
     )
   }
 
